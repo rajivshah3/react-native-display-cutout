@@ -1,5 +1,5 @@
 
-# SafetyNet for React Native
+# DeviceCutout for React Native
 
 [![GitHub version](https://badge.fury.io/gh/rajivshah3%2Freact-native-device-cutout.svg)](https://badge.fury.io/gh/rajivshah3%2Freact-native-device-cutout) [![Maintainability](https://api.codeclimate.com/v1/badges/dfa536260a3131540826/maintainability)](https://codeclimate.com/github/rajivshah3/react-native-device-cutout/maintainability) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/de3c4e6e440f4cdf93492ddd5b41ace1)](https://app.codacy.com/app/rajivshah3/react-native-device-cutout?utm_source=github.com&utm_medium=referral&utm_content=rajivshah3/react-native-device-cutout&utm_campaign=badger)
 
