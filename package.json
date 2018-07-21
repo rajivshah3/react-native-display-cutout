@@ -1,0 +1,42 @@
+{
+  "name": "react-native-device-cutout",
+  "version": "0.0.0",
+  "description": "React Native implementation for Google's SafetyNet API",
+  "author": "Rajiv Shah <rajivshah1@icloud.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/rajivshah3/react-native-device-cutout",
+  "bugs": "https://github.com/rajivshah3/react-native-device-cutout/issues",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "./node_modules/.bin/esdoc",
+    "format": "prettier --write \"**/*.{js,json}\"",
+    "lint": "./node_modules/.bin/eslint .",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json}": ["prettier --write", "git add"]
+  },
+  "keywords": ["react-native", "devicecutout"],
+  "peerDependencies": {
+    "react-native": "^0.48.0"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.3",
+    "esdoc": "1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "1.0.0",
+    "esdoc-standard-plugin": "1.0.0",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-babel": "5.1.0",
+    "eslint-plugin-import": "2.11.0",
+    "eslint-plugin-prettier": "2.6.0",
+    "eslint-plugin-react-native": "3.2.1",
+    "husky": "0.14.3",
+    "lint-staged": "7.0.5",
+    "prettier": "1.12.1"
+  }
+}
