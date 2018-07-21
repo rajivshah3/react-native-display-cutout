@@ -26,21 +26,6 @@ public class RNDeviceCutoutModule extends ReactContextBaseJavaModule {
   }
 
   /**
-   * Sets mode to default (0)
-   * See https://developer.android.com/reference/android/R.attr#windowLayoutInDisplayCutoutMode
-   * @param promise
-   */
-  @ReactMethod
-  public void layoutInDisplayCutoutMode(final Promise promise) {
-    try {
-      LayoutParams.layoutInDisplayCutoutMode();
-      promise.resolve();
-    } catch(Exception e) {
-      promise.reject(e);
-    }
-  }
-
-  /**
    * Sets mode
    * See https://developer.android.com/reference/android/R.attr#windowLayoutInDisplayCutoutMode
    * @param mode
