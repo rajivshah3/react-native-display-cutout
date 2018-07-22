@@ -1,6 +1,10 @@
 
-package com.rajivshah.devicecutout;
+package com.rajivshah.displaycutout;
 
+import android.view.Window;
+import android.view.WindowInsets;
+import android.view.View;
+import android.app.Activity;
 import android.view.WindowManager.LayoutParams;
 import android.view.DisplayCutout;
 import android.graphics.Rect;
@@ -14,15 +18,19 @@ import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.Promise;
 
-public class RNDeviceCutoutModule extends ReactContextBaseJavaModule {
+import java.util.List;
 
-  public RNDeviceCutoutModule(ReactApplicationContext reactContext) {
+public class RNDisplayCutoutModule extends ReactContextBaseJavaModule {
+  private WindowInsets insets;
+  private DisplayCutout displayCutout;
+
+  public RNDisplayCutoutModule(ReactApplicationContext reactContext) {
     super(reactContext);
   }
 
   @Override
   public String getName() {
-    return "RNDeviceCutout";
+    return "RNDisplayCutout";
   }
 
   /**
@@ -32,13 +40,18 @@ public class RNDeviceCutoutModule extends ReactContextBaseJavaModule {
    * @param promise
    */
   @ReactMethod
-  public void layoutInDisplayCutoutMode(final int mode, final Promise promise) {
-    try {
-      LayoutParams.layoutInDisplayCutoutMode(mode);
-      promise.resolve();
-    } catch(Exception e) {
-      promise.reject(e);
-    }
+  public void activate(final int mode) {
+      final Activity activity = getCurrentActivity();
+      if (activity != null) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    LayoutParams params = new LayoutParams();
+                    params.layoutInDisplayCutoutMode = mode;
+                    activity.getWindow().setAttributes(params);
+                }
+            });
+        }
   }
 
   /**
@@ -48,7 +61,7 @@ public class RNDeviceCutoutModule extends ReactContextBaseJavaModule {
    */
   @ReactMethod
   public void getBoundingRects(final Promise promise) {
-    List<Rect> rects = DisplayCutout.getBoundingRects();
+    List<Rect> rects = displayCutout.getBoundingRects();
     if (rects.isEmpty()) {
       promise.resolve(null);
     } else {
@@ -73,7 +86,7 @@ public class RNDeviceCutoutModule extends ReactContextBaseJavaModule {
    */
   @ReactMethod
   public void getSafeInsetBottom(final Promise promise) {
-    promise.resolve(DisplayCutout.getSafeInsetBottom());
+    promise.resolve(displayCutout.getSafeInsetBottom());
   }
 
   /**
@@ -84,7 +97,7 @@ public class RNDeviceCutoutModule extends ReactContextBaseJavaModule {
    */
   @ReactMethod
   public void getSafeInsetLeft(final Promise promise) {
-    promise.resolve(DisplayCutout.getSafeInsetLeft());
+    promise.resolve(displayCutout.getSafeInsetLeft());
   }
 
   /**
@@ -95,7 +108,7 @@ public class RNDeviceCutoutModule extends ReactContextBaseJavaModule {
    */
   @ReactMethod
   public void getSafeInsetRight(final Promise promise) {
-    promise.resolve(DisplayCutout.getSafeInsetRight());
+    promise.resolve(displayCutout.getSafeInsetRight());
   }
 
   /**
@@ -106,7 +119,11 @@ public class RNDeviceCutoutModule extends ReactContextBaseJavaModule {
    */
   @ReactMethod
   public void getSafeInsetTop(final Promise promise) {
-    promise.resolve(DisplayCutout.getSafeInsetTop());
+    promise.resolve(displayCutout.getSafeInsetTop());
+  }
+
+  public void onApplyWindowInsets(WindowInsets insets) {
+    displayCutout = insets.getDisplayCutout();
   }
 
 }

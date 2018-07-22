@@ -1,11 +1,11 @@
 {
-  "name": "react-native-device-cutout",
+  "name": "react-native-display-cutout",
   "version": "0.0.0",
   "description": "React Native implementation for Google's SafetyNet API",
   "author": "Rajiv Shah <rajivshah1@icloud.com>",
   "license": "MIT",
-  "homepage": "https://github.com/rajivshah3/react-native-device-cutout",
-  "bugs": "https://github.com/rajivshah3/react-native-device-cutout/issues",
+  "homepage": "https://github.com/rajivshah3/react-native-display-cutout",
+  "bugs": "https://github.com/rajivshah3/react-native-display-cutout/issues",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,12 +17,11 @@
   "lint-staged": {
     "*.{js,json}": ["prettier --write", "git add"]
   },
-  "keywords": ["react-native", "devicecutout"],
+  "keywords": ["react-native", "displaycutout"],
   "peerDependencies": {
     "react-native": "^0.48.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-eslint": "8.2.6",
     "esdoc": "1.1.0",
